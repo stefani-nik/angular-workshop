@@ -8,6 +8,10 @@
 
 `npm install -g @angular/cli`
 
+**You also need to install Bootstrap 4**
+
+ `npm install bootstrap`
+
 :boom: Follow the TODO's in the code :boom:
 
 ## :trollface: Task 1
