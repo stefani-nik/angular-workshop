@@ -7,11 +7,12 @@ import { Albums } from './albums';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
-  // TODO - 6: Add boolean flag here for toggling the album titles column in the table.
+  showAlbumTitles: Boolean = true;
   albums: Array<any> = Albums;
 
   constructor() { }
 
-  // TODO - 7: Add a function here to toggle the boolean flag value.
+  toggleAlbumTitles() {
+    this.showAlbumTitles = !this.showAlbumTitles;
+  }
 }
