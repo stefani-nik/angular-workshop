@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// TODO - 1: Import HttpClient from '@angular/common/http'
 
 @Component({
   selector: 'app-albums-table',
@@ -11,20 +11,18 @@ export class AlbumsTableComponent implements OnInit {
   albums: Array<any>;
   @Output() showAlbumImagesEvent: EventEmitter<Number> = new EventEmitter();
 
-  constructor(private httpClient: HttpClient) { }
+  // TODO - 2: Inject HttpClient in the constructor
+  constructor() { }
 
   ngOnInit() {
-    this.initAlbums();
+    // TODO - 4: Call the function you created for initializing the albums
   }
 
-  initAlbums() {
-    this.httpClient.get('https://jsonplaceholder.typicode.com/albums')
-      .subscribe((data: any) => {
-        this.albums = data;
-      }, (error: any) => {
-        console.log(error);
-      });
-  }
+  // TODO - 3: Implement a function in which you should:
+  // 3.1. Use the HttpClient to make a GET request for the albums with the following URL:'https://jsonplaceholder.typicode.com/albums'
+  // 3.2. Subscribe to the response.
+  // 3.3. In case of success, assign the received data to the albums array.
+  // 3.4. In case of an error, log the error.
 
   toggleAlbumTitles() {
     this.showAlbumTitles = !this.showAlbumTitles;

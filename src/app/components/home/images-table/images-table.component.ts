@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// TODO - 1: Import HttpClient from '@angular/common/http'
 
 @Component({
   selector: 'app-images-table',
@@ -10,25 +10,20 @@ export class ImagesTableComponent implements OnChanges {
   @Input() albumId: Number;
 
   images: Array<any>;
-  loading: Boolean = false;
 
-  constructor(private httpClient: HttpClient) { }
+  // TODO - 2: Inject HttpClient in the constructor
+  constructor() { }
 
   ngOnChanges() {
-    if (this.albumId) {
-      this.loading = true;
-      this.getImages(this.albumId);
-    }
+    // TODO - 4: Call the function you created passing as a parameter the albumId to get the images for the currently selected album
+    // Note: Check if albumId is defined before calling the function
   }
 
-  getImages(albumId: Number) {
-    this.httpClient.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
-      .subscribe((data: any) => {
-        this.images = data;
-        this.loading = false;
-      }, (error: any) => {
-        console.log(error);
-        this.loading = false;
-      });
-  }
+  // TODO - 3: Implement a function in which you should:
+  // 3.1. Set loading variable to true before the request is made
+  // 3.2. Use the HttpClient to make a GET request for the images with the following URL:
+  // 'https://jsonplaceholder.typicode.com/photos?albumId=${albumId}'
+  // 3.3. Subscribe to the response.
+  // 3.4. In case of success, assing the received data to the images array and set the loading flag to false.
+  // 3.5. In case of an error, log the error and set the loading flag to false.
 }
