@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Albums } from './albums';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +6,11 @@ import { Albums } from './albums';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  showAlbumTitles: Boolean = true;
-  albums: Array<any> = Albums;
+  albumId: Number;
 
   constructor() { }
 
-  toggleAlbumTitles() {
-    this.showAlbumTitles = !this.showAlbumTitles;
+  onShowAlbumImages(albumId: Number) {
+    this.albumId = albumId;
   }
 }

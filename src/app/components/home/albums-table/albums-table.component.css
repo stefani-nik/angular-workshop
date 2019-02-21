@@ -1,0 +1,15 @@
+td {
+    text-align: center;
+}
+
+table {
+    margin-top: 30px;
+}
+
+.gray-table-cell {
+    background-color: lightgray;
+}
+
+.btn-primary {
+    width: 200px;
+}
