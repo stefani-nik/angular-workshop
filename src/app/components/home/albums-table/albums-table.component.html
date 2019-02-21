@@ -11,13 +11,15 @@
         <tbody>
           <tr *ngFor="let album of albums;let odd = odd;" [ngClass]="{'gray-table-cell': odd}">
             <td>
-              <h3>{{ album.id }}</h3>
+              <h3>{{album.id}}</h3>
             </td>
             <td *ngIf="showAlbumTitles">
-              <h3>{{ album.title }}</h3>
+              <h3>{{album.title}}</h3>
             </td>
             <td>
-              <button class="btn btn-secondary" (click)="showAlbumImages(album.id)">Show Images</button>
+              <!-- TODO - 1: Add an event listener which triggers the function for showing the album images.
+                      Pass the album id as a parameter. -->
+              <button class="btn btn-secondary">Show Images</button>
             </td>
           </tr>
         </tbody>
@@ -26,7 +28,7 @@
 </div>
 
 <div class="row">
- <div class="col-sm-2 offset-2">
-   <button class="btn btn-primary" (click)="toggleAlbumTitles()">{{ showAlbumTitles ? 'Hide' : 'Show'}} Album Titles </button>
- </div>
-</div> 
+  <div class="col-sm-2 offset-2">
+    <button class="btn btn-primary" (click)="toggleAlbumTitles()">{{ showAlbumTitles ? 'Hide' : 'Show'}} Album Titles </button>
+  </div>
+</div>

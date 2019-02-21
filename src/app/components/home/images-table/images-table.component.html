@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-sm-8 offset-sm-2">
-  <h2 *ngIf="!filteredImages" class="heading">Select an album to see images!</h2>
-     <table *ngIf="filteredImages" class="table table-bordered">
+     <!-- TODO - 5: If there is no selected album show 'Select an album to see images!' message
+          otherwise display the table.-->
+    <table class="table table-bordered">
         <thead>
           <tr>
             <th>Title</th>
@@ -9,12 +10,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let image of filteredImages">
+          <!-- TODO - 6: Use *ngFor to iterate over the filtered images. -->
+          <tr>
             <td>
-              <h3>{{ image.title }}</h3>
+              <!-- TODO - 7: Display the image title. -->
+              <h3></h3>
             </td>
             <td>
-              <img src="{{ image.url }}" alt="Image could not be loaded" class="table-image">
+              <!-- TODO - 8: Pass the image url to the src attribute of the img tag. -->
+              <img src="" alt="Image could not be loaded" class="table-image">
             </td>
           </tr>
         </tbody>

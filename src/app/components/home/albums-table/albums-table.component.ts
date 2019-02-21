@@ -9,7 +9,10 @@ import { Albums } from './albums';
 export class AlbumsTableComponent {
   showAlbumTitles: Boolean = true;
   albums: Array<any> = Albums;
-  @Output() showAlbumImagesEvent: EventEmitter<Number> = new EventEmitter();
+
+  // TODO - 2: Define an event emitter using the Output annotation
+  // in order to notify the home component when the 'Show Images' button has been clicked.
+  // The event emitter will emit the selected album id.
 
   constructor() { }
 
@@ -17,7 +20,6 @@ export class AlbumsTableComponent {
     this.showAlbumTitles = !this.showAlbumTitles;
   }
 
-  showAlbumImages(albumId: Number) {
-    this.showAlbumImagesEvent.emit(albumId);
-  }
+  // TODO - 3: Implement the function which will trigger the event emitter after the click of the 'Show Images' button.
+  // Call this function on click of the button in the template - ref. TODO - 1
 }

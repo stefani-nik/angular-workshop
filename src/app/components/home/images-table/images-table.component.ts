@@ -7,16 +7,17 @@ import { Images } from './images';
   styleUrls: ['./images-table.component.css']
 })
 export class ImagesTableComponent implements OnChanges {
-  @Input() albumId: Number;
+  // TODO - 1: Define a variable using the Input annotation
+  // in order to store the accepted album id value from the Home Component.
+ 
+  // TODO - 2: Define a variable which will store the filtered images.
 
-  filteredImages: any;
   images: Array<any> = Images;
 
   constructor() { }
 
+  // TODO - 3: Use the ngOnChanges lifecycle hook to assign value to the filtered images variable.
   ngOnChanges() {
-    if(this.albumId) {
-      this.filteredImages = this.images.filter(image => image.albumId == this.albumId);
-    }
+    // TODO - 4: Get the images which have album id the same as the selected one and asign them to the defined variable.
   }
 }
