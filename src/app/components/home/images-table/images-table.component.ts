@@ -10,6 +10,7 @@ export class ImagesTableComponent implements OnChanges {
   @Input() albumId: Number;
 
   images: Array<any>;
+  loading: Boolean = false;
 
   // TODO - 2: Inject HttpClient in the constructor
   constructor() { }
