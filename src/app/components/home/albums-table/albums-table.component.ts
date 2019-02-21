@@ -1,17 +1,30 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { Albums } from './albums';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-albums-table',
   templateUrl: './albums-table.component.html',
   styleUrls: ['./albums-table.component.css']
 })
-export class AlbumsTableComponent {
+export class AlbumsTableComponent implements OnInit {
   showAlbumTitles: Boolean = true;
-  albums: Array<any> = Albums;
+  albums: Array<any>;
   @Output() showAlbumImagesEvent: EventEmitter<Number> = new EventEmitter();
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  ngOnInit() {
+    this.initAlbums();
+  }
+
+  initAlbums() {
+    this.httpClient.get('https://jsonplaceholder.typicode.com/albums')
+      .subscribe((data: any) => {
+        this.albums = data;
+      }, (error: any) => {
+        console.log(error);
+      });
+  }
 
   toggleAlbumTitles() {
     this.showAlbumTitles = !this.showAlbumTitles;

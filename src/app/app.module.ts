@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AlbumsTableComponent } from './components/home/albums-table/albums-table.component';
 import { ImagesTableComponent } from './components/home/images-table/images-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ImagesTableComponent } from './components/home/images-table/images-tabl
     ImagesTableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

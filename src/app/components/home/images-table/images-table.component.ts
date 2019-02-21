@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Images } from './images';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-images-table',
@@ -9,14 +9,26 @@ import { Images } from './images';
 export class ImagesTableComponent implements OnChanges {
   @Input() albumId: Number;
 
-  filteredImages: any;
-  images: Array<any> = Images;
+  images: Array<any>;
+  loading: Boolean = false;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnChanges() {
-    if(this.albumId) {
-      this.filteredImages = this.images.filter(image => image.albumId == this.albumId);
+    if (this.albumId) {
+      this.loading = true;
+      this.getImages(this.albumId);
     }
+  }
+
+  getImages(albumId: Number) {
+    this.httpClient.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+      .subscribe((data: any) => {
+        this.images = data;
+        this.loading = false;
+      }, (error: any) => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 }

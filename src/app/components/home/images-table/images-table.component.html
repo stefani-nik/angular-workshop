@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-sm-8 offset-sm-2">
-  <h2 *ngIf="!filteredImages" class="heading">Select an album to see images!</h2>
-     <table *ngIf="filteredImages" class="table table-bordered">
+  <div *ngIf="loading" class="spinner-border position-loader" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <h2 *ngIf="!images && !loading" class="heading">Select an album to see images!</h2>
+     <table *ngIf="images" class="table table-bordered">
         <thead>
           <tr>
             <th>Title</th>
@@ -9,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let image of filteredImages">
+          <tr *ngFor="let image of images">
             <td>
               <h3>{{ image.title }}</h3>
             </td>
