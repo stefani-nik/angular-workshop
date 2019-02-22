@@ -1,10 +1,13 @@
 <div class="row">
   <div class="col-sm-5 offset-sm-1">
-    <app-albums-table (showAlbumImagesEvent)="onShowAlbumImages($event)">
+    <!-- TODO - 1: Subscribe to the event emitter from the Albums Table Component. 
+      Pass the emmitted album id to your custom function in the component by using $event argument -->
+    <app-albums-table>
     </app-albums-table>
   </div>
   <div class="col-sm-5">
-    <app-images-table [albumId]="albumId">
+    <!-- TODO - 4: Use property binding to pass the album id to the Images Table Component -->
+    <app-images-table>
     </app-images-table>
   </div>
 </div>
