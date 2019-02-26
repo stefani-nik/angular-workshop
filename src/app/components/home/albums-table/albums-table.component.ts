@@ -11,7 +11,7 @@ export class AlbumsTableComponent implements OnInit {
   showAlbumTitles: Boolean = true;
   albums: Array<any>;
   @Output() showAlbumImagesEvent: EventEmitter<Number> = new EventEmitter();
-
+  
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
