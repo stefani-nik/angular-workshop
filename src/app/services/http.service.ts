@@ -15,4 +15,8 @@ export class HttpService {
     getAlbums() {
         return this.httpClient.get('https://jsonplaceholder.typicode.com/albums');
     }
+
+    addImage(image) {
+        return this.httpClient.post('https://jsonplaceholder.typicode.com/photos', image);
+    }
 }

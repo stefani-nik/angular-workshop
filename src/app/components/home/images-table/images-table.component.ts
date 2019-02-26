@@ -1,7 +1,7 @@
 import { HttpService } from './../../../services/http.service';
 
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-// TODO - 1: Import FormBuilder, FormGroup and Validators from '@angular/forms'.
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-images-table',
@@ -14,16 +14,13 @@ export class ImagesTableComponent implements OnInit, OnChanges {
   images: Array<any>;
   loading: Boolean = false;
 
-  // TODO - 2: Declare addImageForm variable of type FormGroup.
+  addImageForm: FormGroup;
   isSubmitted = false;
 
-  // TODO - 3: Inject FormBuilder in the constructor.
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    // TODO - 4: Initialize addImageForm using the injected form builder. 
-    //           4.1. Add form controls for title and url.
-    //           4.2. Use the built-in validators to make sure the title and url are required and the title minimum length is 10 characters.
+    this.addImageForm = this.initFormGroup();
   }
 
   ngOnChanges() {
@@ -44,10 +41,22 @@ export class ImagesTableComponent implements OnInit, OnChanges {
       });
   }
 
-  // TODO - 5: Implement a function for adding images in which you should:
-  //           5.1. Set isSubmitted variable to true. 
-  //           5.2. If the form is valid - use the httpService.addImage method and pass addImageForm.value as parameter to make a POST request.
-  //           5.3. Subscribe to the response. 
-  //           5.4. In case of success, log the received data.
-  //           5.5. In case of an error, log the error.
+  initFormGroup() {
+    return this.fb.group({
+      title: ['', [ Validators.required, Validators.minLength(10) ]],
+      url: ['', [ Validators.required ]]
+    });
+  }
+
+  addImage() {
+    this.isSubmitted = true;
+    if(this.addImageForm.valid) {
+      this.httpService.addImage(this.addImageForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+      }, (error: any) => {
+        console.log(error);
+      });
+    }
+  }
 }
