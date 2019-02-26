@@ -91,4 +91,40 @@
        3.4. In case of success, assing the received data to the images array and set the loading flag to false.   
        3.5. In case of an error, log the error and set the loading flag to false.
     4. Call the function you created for initializing the images in ngOnChanges.
+    
+ ## :trollface: Task 5
+* Checkout `task-5-initial` branch.
+* Create a new folder called 'services' into the 'app' folder
+* Create a new file called 'http.service.ts'
+* Create a class called HttpService which is Injectable and is singleton (Remember "providedIn : 'root' ? :smile:)
+* In the constructor of the newly implemeted HttpService inject the HttpClient
+* Create two functions which use the HttpClient to make a GET request for the images and albums.
+* Inject the HttpService in the Albums Table and Images Table components.
+* Use the functions of the HttpService and subscribe to the returned Observables.
+
+## :trollface: Task 6
+* Checkout `task-6-initial` branch.
+* In the App Module: 
+    1. Import ReactiveFormsModule from '@angular/forms'.
+    2. Add ReactiveFormsModule to the imports.
+* In the Images Table Component: 
+    1. Import FormBuilder, FormGroup and Validators from '@angular/forms'.  
+    2. Declare addImageForm variable of type FormGroup.  
+    3. Inject FormBuilder in the constructor.  
+    4. Initialize addImageForm using the injected form builder.  
+       4.1. Add form controls for title and url.  
+       4.2. Use the built-in validators to make sure the title and url are required and the title minimum length is 10 characters.  
+    5. Implement a function for adding images in which you should:  
+       5.1. Set isSubmitted variable to true.   
+       5.2. If the form is valid - use the httpService.addImage method and pass addImageForm.value as parameter to make a POST request.  
+       5.3. Subscribe to the response.  
+       5.4. In case of success, log the received data.  
+       5.5. In case of an error, log it.  
+* In the Images Table Component template: 
+    1. Use property binding to register formGroup to the addImageForm.
+    2. Use formControlName attribute in the input tag to set the name of the title form control.
+    3. Show appropriate error messages for required and minLength validation errors.
+    4. Use formControlName attribute in the input tag to set the name of the url form control.
+    5. Show appropriate error message for required validation error.
+    6. Add an event listener to the 'Submit" button, which triggers the function for adding images defined in the component.
 
