@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+import { HttpService } from './../../../services/http.service';
 
 @Component({
   selector: 'app-albums-table',
@@ -11,16 +12,14 @@ export class AlbumsTableComponent implements OnInit {
   albums: Array<any>;
   @Output() showAlbumImagesEvent: EventEmitter<Number> = new EventEmitter();
 
-  // TODO - 1: Inject the newly implemented HttpService in the constructor of the class
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     this.initAlbums();
   }
 
   initAlbums() {
-    // TODO - 2: Replace the call to the REST Api with the function you implemented in the HttpService
-    this.httpClient.get('https://jsonplaceholder.typicode.com/albums')
+    this.httpService.getAlbums()
       .subscribe((data: any) => {
         this.albums = data;
       }, (error: any) => {

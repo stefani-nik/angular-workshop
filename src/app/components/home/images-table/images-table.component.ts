@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+import { HttpService } from './../../../services/http.service';
 
 @Component({
   selector: 'app-images-table',
@@ -12,8 +13,7 @@ export class ImagesTableComponent implements OnChanges {
   images: Array<any>;
   loading: Boolean = false;
 
-  // TODO - 1: Inject the newly implemented HttpService in the constructor of the class
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnChanges() {
     if (this.albumId) {
@@ -23,8 +23,7 @@ export class ImagesTableComponent implements OnChanges {
   }
 
   getImages(albumId: Number) {
-    // TODO - 2: Replace the call to the REST Api with the function you implemented in the HttpService
-    this.httpClient.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+    this.httpService.getImages(albumId)
       .subscribe((data: any) => {
         this.images = data;
         this.loading = false;
