@@ -1,10 +1,36 @@
 <div class="row">
-  <div class="col-sm-8 offset-sm-2">
+  <div class="col-sm-10 offset-sm-2 form-container">
+    <h1>Add image</h1>
+    <!-- TODO - 1: Use property binding to register formGroup to the addImageForm. -->
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <!-- TODO - 2: Use formControlName attribute in the input tag to set the name of the title form control. -->
+        <input class="form-control" name="title">
+        <div *ngIf="isSubmitted && addImageForm.controls.title.errors" class="alert alert-danger">
+          <!-- TODO - 3: Show appropriate error messages for required and minLength validation errors. -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="url">Url</label>
+         <!-- TODO - 4: Use formControlName attribute in the input tag to set the name of the url form control. -->
+        <input class="form-control" name="url">
+        <div *ngIf="isSubmitted && addImageForm.controls.url.errors" class="alert alert-danger">
+          <!-- TODO - 5: Show appropriate error message for required validation error. -->
+        </div>     
+      </div>
+      <!-- TODO - 6: Add an event listener to the 'Submit" button, which triggers the function for adding images defined in the component. -->
+      <button class="btn btn-success">Submit</button>   
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10 offset-sm-2">
   <div *ngIf="loading" class="spinner-border position-loader" role="status">
     <span class="sr-only">Loading...</span>
   </div>
   <h2 *ngIf="!images && !loading" class="heading">Select an album to see images!</h2>
-     <table *ngIf="images" class="table table-bordered">
+      <table *ngIf="images" class="table table-bordered">
         <thead>
           <tr>
             <th>Title</th>

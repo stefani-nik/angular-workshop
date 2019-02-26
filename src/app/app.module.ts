@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// TODO - 1: Import ReactiveFormsModule from '@angular/forms'.
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     AlbumsTableComponent,
     ImagesTableComponent
   ],
+  // TODO - 2: Add ReactiveFormsModule to the imports.
   imports: [
     BrowserModule,
     HttpClientModule
