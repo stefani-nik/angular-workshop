@@ -126,5 +126,5 @@
     3. Show appropriate error messages for required and minLength validation errors.
     4. Use formControlName attribute in the input tag to set the name of the url form control.
     5. Show appropriate error message for required validation error.
-    6. Add an event listener to the 'Submit" button, which triggers the function for adding images defined in the component.
+    6. Handle the submit event and trigger the function for adding images defined in the component.
 
