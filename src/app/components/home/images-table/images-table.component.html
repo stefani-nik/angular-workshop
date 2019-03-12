@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-10 offset-sm-2 form-container">
     <h1>Add image</h1>
-    <form [formGroup]="addImageForm">
+    <form [formGroup]="addImageForm" (ngSubmit)="addImage()">
       <div class="form-group">
         <label for="title">Title</label>
         <input class="form-control" formControlName="title" name="title">
@@ -17,7 +17,7 @@
             <span *ngIf="addImageForm.controls.url.errors.required" class="help-block">Url is required.</span>
         </div>     
       </div>
-      <button class="btn btn-success" (click)="addImage()">Submit</button>   
+      <button class="btn btn-success" type="submit">Submit</button>   
     </form>
   </div>
 </div>
